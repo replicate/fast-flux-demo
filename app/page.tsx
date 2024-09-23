@@ -99,7 +99,7 @@ export default function Home() {
         </div>
       </main>
       {images.length > 0 && (
-        <footer className="p-4 flex justify-center">
+        <footer className="p-20 flex justify-center">
           <button
             type="button"
             onClick={clearLocalStorage}
