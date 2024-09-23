@@ -53,15 +53,21 @@ export default function Home() {
     setText(e.target.value)
   }
 
+  const clearLocalStorage = () => {
+    localStorage.removeItem('generatedImages')
+    setImages([])
+    window.location.reload()
+  }
+
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
-      <header className="bg-gray-800 p-4 sticky top-0 z-10 shadow-md">
+    <div className="min-h-screen bg-stone-900 flex flex-col">
+      <header className="bg-stone-800 p-4 sticky top-0 z-10 shadow-md">
         <textarea
           ref={textareaRef}
           value={text}
           onChange={handleTextChange}
           placeholder="Type to generate images..."
-          className="w-full p-2 bg-transparent text-white placeholder-gray-400 overflow-hidden text-xl resize-none h-10 outline-none"
+          className="w-full p-2 bg-transparent text-stone-100 placeholder-stone-400 overflow-hidden text-xl resize-none h-10 outline-none"
           rows={1}
           autoFocus
         />
@@ -81,7 +87,7 @@ export default function Home() {
                   />
                   {img.metrics && (
                     <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute bottom-0 left-0 bg-black bg-opacity-70 text-gray-300 text-xs px-2 py-1">
+                      <div className="absolute bottom-0 left-0 bg-stone-900 bg-opacity-70 text-stone-300 text-sm px-2 py-1">
                         {Math.round(img.metrics.predict_time * 1000)}ms
                       </div>
                     </div>
@@ -92,6 +98,17 @@ export default function Home() {
           ))}
         </div>
       </main>
+      {images.length > 0 && (
+        <footer className="p-4 flex justify-center">
+          <button
+            type="button"
+            onClick={clearLocalStorage}
+            className="bg-stone-600 hover:bg-stone-700 text-stone-100 font-bold py-2 px-4 rounded"
+          >
+            Start Over
+          </button>
+        </footer>
+      )}
     </div>
   )
 }
