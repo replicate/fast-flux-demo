@@ -20,9 +20,9 @@ export default function Home() {
   }, [text])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="space-y-4 text-center">
-        <div className="relative w-[512px] h-[512px] border border-gray-300 rounded-lg flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="w-full max-w-[512px] space-y-4 text-center">
+        <div className="relative w-full aspect-square border border-gray-300 rounded-lg flex items-center justify-center">
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -39,7 +39,7 @@ export default function Home() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter text to generate an image..."
-          className="w-[512px] h-[100px] p-2 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full h-[100px] p-2 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
     </div>
