@@ -16,11 +16,13 @@ export async function GET(request: Request) {
     output_quality: 80
   };
   
-  const output = await replicate.run(model, { input }) as string[]
+  let prediction
+  const onProgress = (predictionData) => {
+    prediction = predictionData;
+    console.log({ prediction });
+  };
 
-  if (output.length === 0) {
-    return NextResponse.json({ error: 'No image generated' }, { status: 500 })
-  }
+  const output = await replicate.run(model, { input }, onProgress) as string[]
 
-  return NextResponse.json({ imageUrl: output[0] })
+  return NextResponse.json({ prediction })
 }

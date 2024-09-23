@@ -5,14 +5,14 @@ import Image from 'next/image'
 
 export default function Home() {
   const [text, setText] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+  const [prediction, setPrediction] = useState('')
 
   useEffect(() => {
     const debounce = setTimeout(() => {
       if (text) {
         fetch(`/api/generate-image?text=${encodeURIComponent(text)}`)
           .then(res => res.json())
-          .then(data => setImageUrl(data.imageUrl))
+          .then(data => setPrediction(data.prediction))
       }
     }, 300)
 
@@ -23,9 +23,9 @@ export default function Home() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-[512px] space-y-4 text-center">
         <div className="relative w-full aspect-square border border-gray-300 rounded-lg flex items-center justify-center">
-          {imageUrl ? (
+          {prediction?.status === "succeeded" ? (
             <Image
-              src={imageUrl}
+              src={prediction?.output[0]}
               alt="Generated image"
               fill
               sizes="(max-width: 768px) 100vw, 512px"
