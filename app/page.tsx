@@ -24,18 +24,20 @@ export default function Home() {
     }
   }, [])
 
-  const generateImage = useCallback(() => {
+  const generateImage = useCallback(async () => {
     if (text && text !== prevTextRef.current) {
       prevTextRef.current = text
-      fetch(`/api/generate-image?text=${encodeURIComponent(text)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.prediction.status === 'succeeded') {
-            const updatedImages = [data.prediction, ...images]
-            setImages(updatedImages)
-            localStorage.setItem('generatedImages', JSON.stringify(updatedImages))
-          }
-        })
+      try {
+        const response = await fetch(`/api/generate-image?text=${encodeURIComponent(text)}`)
+        const data = await response.json()
+        if (data.prediction.status === 'succeeded') {
+          const updatedImages = [data.prediction, ...images]
+          setImages(updatedImages)
+          localStorage.setItem('generatedImages', JSON.stringify(updatedImages))
+        }
+      } catch (error) {
+        console.error('Error generating image:', error)
+      }
     }
   }, [text, images])
 
@@ -58,8 +60,10 @@ export default function Home() {
           ref={textareaRef}
           value={text}
           onChange={handleTextChange}
-          placeholder="Start typing to generate images..."
-          className="w-full p-2 bg-transparent text-white placeholder-gray-400 overflow-hidden text-xl"
+          placeholder="Type to generate images..."
+          className="w-full p-2 bg-transparent text-white placeholder-gray-400 overflow-hidden text-xl resize-none h-10 outline-none"
+          rows={1}
+          autoFocus
         />
       </header>
       <main className="flex-grow">
