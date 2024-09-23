@@ -49,15 +49,7 @@ export default function Home() {
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value)
-    // adjustTextareaHeight()
   }
-
-  // const adjustTextareaHeight = () => {
-  //   if (textareaRef.current) {
-  //     textareaRef.current.style.height = 'auto'
-  //     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
-  //   }
-  // }
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
@@ -66,8 +58,8 @@ export default function Home() {
           ref={textareaRef}
           value={text}
           onChange={handleTextChange}
-          placeholder="Enter text to generate an image..."
-          className="w-full p-2 bg-transparent text-white placeholder-gray-400 overflow-hidden text-lg"
+          placeholder="Start typing to generate images..."
+          className="w-full p-2 bg-transparent text-white placeholder-gray-400 overflow-hidden text-xl"
         />
       </header>
       <main className="flex-grow">
