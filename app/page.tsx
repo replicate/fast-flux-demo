@@ -2,18 +2,11 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
-
-interface ImagePrediction {
-  status: string;
-  output: string[];
-  metrics?: {
-    predict_time: number;
-  };
-}
+import { Prediction } from 'replicate'
 
 export default function Home() {
   const [text, setText] = useState('')
-  const [images, setImages] = useState<ImagePrediction[]>([])
+  const [images, setImages] = useState<Prediction[]>([])
   const prevTextRef = useRef('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 

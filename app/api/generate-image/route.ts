@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server'
-import Replicate from 'replicate'
+import Replicate, { Prediction } from 'replicate'
 
-interface Prediction {
-  [key: string]: unknown;
-}
 
 export async function GET(request: Request) {
   const replicate = new Replicate()
