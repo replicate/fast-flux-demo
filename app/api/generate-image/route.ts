@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     console.log({ prediction });
   };
 
-  const output = await replicate.run(model, { input }, onProgress) as string[]
+  await replicate.run(model, { input }, onProgress)
 
   return NextResponse.json({ prediction })
 }
