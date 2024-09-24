@@ -17,8 +17,8 @@ export async function GET(request: Request) {
     output_quality: 80
   };
   
-  let prediction: Prediction | null = null; // Initialize prediction to null
-  const onProgress = (predictionData: Prediction) => {
+  let prediction
+  const onProgress = (predictionData) => {
     prediction = predictionData;
     console.log({ prediction });
   };
