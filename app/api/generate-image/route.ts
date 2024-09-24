@@ -20,13 +20,18 @@ export async function GET(request: Request) {
     output_quality: 80
   };
   
-  let prediction: Prediction
+  let prediction: Prediction | null = null; // Initialize prediction to null
   const onProgress = (predictionData: Prediction) => {
     prediction = predictionData;
     console.log({ prediction });
   };
 
   await replicate.run(model, { input }, onProgress)
+
+  if (prediction === null) {
+    // Handle the case where prediction is still null
+    return NextResponse.json({ error: "Prediction not available" });
+  }
 
   return NextResponse.json({ prediction })
 }
