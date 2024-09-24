@@ -2,18 +2,11 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
-
-interface ImagePrediction {
-  status: string;
-  output: string[];
-  metrics?: {
-    predict_time: number;
-  };
-}
+import { Prediction } from 'replicate'
 
 export default function Home() {
   const [text, setText] = useState('')
-  const [images, setImages] = useState<ImagePrediction[]>([])
+  const [images, setImages] = useState<Prediction[]>([])
   const prevTextRef = useRef('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -85,7 +78,7 @@ export default function Home() {
                     height={512}
                     className="w-full h-auto object-cover"
                   />
-                  {img.metrics && (
+                  {img.metrics && img.metrics.predict_time !== undefined && (
                     <div className="absolute inset-0 pointer-events-none">
                       <div className="absolute bottom-0 left-0 bg-stone-900 bg-opacity-70 text-stone-300 text-sm px-2 py-1">
                         {Math.round(img.metrics.predict_time * 1000)}ms

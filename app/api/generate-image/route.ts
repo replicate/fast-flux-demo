@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import Replicate from 'replicate'
+import Replicate, { Prediction } from 'replicate'
+
 
 export async function GET(request: Request) {
   const replicate = new Replicate()
@@ -16,13 +17,18 @@ export async function GET(request: Request) {
     output_quality: 80
   };
   
-  let prediction
-  const onProgress = (predictionData) => {
+  let prediction: Prediction | null = null; // Initialize prediction to null
+  const onProgress = (predictionData: Prediction) => {
     prediction = predictionData;
     console.log({ prediction });
   };
 
   await replicate.run(model, { input }, onProgress)
+
+  if (prediction === null) {
+    // Handle the case where prediction is still null
+    return NextResponse.json({ error: "Prediction not available" });
+  }
 
   return NextResponse.json({ prediction })
 }
