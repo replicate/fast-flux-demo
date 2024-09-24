@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import Replicate from 'replicate'
 
+interface Prediction {
+  [key: string]: unknown;
+}
+
 export async function GET(request: Request) {
   const replicate = new Replicate()
   const { searchParams } = new URL(request.url)
@@ -16,8 +20,8 @@ export async function GET(request: Request) {
     output_quality: 80
   };
   
-  let prediction
-  const onProgress = (predictionData) => {
+  let prediction: Prediction
+  const onProgress = (predictionData: Prediction) => {
     prediction = predictionData;
     console.log({ prediction });
   };
