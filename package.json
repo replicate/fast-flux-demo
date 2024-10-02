@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "next": "14.2.13",
+    "node-fetch": "^3.3.2",
     "react": "^18",
     "react-dom": "^18",
-    "replicate": "^0.33.0"
+    "replicate": "github:replicate/replicate-javascript#cf4e94ce5d5541ab68c4bd3b1867a7c1d962c557"
   },
   "devDependencies": {
     "@types/node": "^20",
