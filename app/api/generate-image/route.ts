@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Replicate from "replicate";
 
 export async function GET(request: Request) {
-  const replicate = new Replicate({ useFileOutput: true });
+  const replicate = new Replicate();
   const { searchParams } = new URL(request.url);
   const prompt = searchParams.get("text");
 
@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     disable_safety_checker: true,
   };
 
-  const output = await replicate.run(model, { input, wait: true }) as string[];
+  const output = await replicate.run(model, { input }) as string[];
   const headers = new Headers();
   headers.set("Content-Type", "image/*");
   headers.set(

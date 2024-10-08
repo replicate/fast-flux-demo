@@ -13,7 +13,7 @@
     "node-fetch": "^3.3.2",
     "react": "^18",
     "react-dom": "^18",
-    "replicate": "github:replicate/replicate-javascript#cf4e94ce5d5541ab68c4bd3b1867a7c1d962c557"
+    "replicate": "^1.0.0-beta.1"
   },
   "devDependencies": {
     "@types/node": "^20",
