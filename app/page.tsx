@@ -7,7 +7,12 @@ export default function Home() {
   const [texts, setTexts] = useState<string[]>([]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTexts([...texts, e.target.value]);
+    const newTexts = [...texts, e.target.value];
+    // Limit number of images to 50
+    if (newTexts.length > 50) {
+      newTexts.splice(0, newTexts.length - 50);
+    }
+    setTexts(newTexts);
   };
 
   return (
