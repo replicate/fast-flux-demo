@@ -8,7 +8,6 @@ export async function GET(request: Request) {
 
   const model = "black-forest-labs/flux-schnell";
   const input = {
-    seed: 1337,
     prompt,
     go_fast: true,
     num_outputs: 1,
