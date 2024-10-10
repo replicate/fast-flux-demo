@@ -16,7 +16,6 @@ export async function GET(request: Request) {
     output_quality: 80,
     megapixels: "0.25",
     num_inference_steps: 2,
-    disable_safety_checker: true,
   };
 
   const output = await replicate.run(model, { input }) as string[];
