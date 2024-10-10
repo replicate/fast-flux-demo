@@ -24,3 +24,16 @@ npm install && npm run dev
 ```
 
 Then open [localhost:3000](http://localhost:3000) in your browser to see the app.
+
+## Continuous Deployment
+
+This project uses GitHub Actions for continuous deployment. Every push to the `main` branch triggers a workflow that builds and deploys the site to Cloudflare Workers.
+
+The deployment process is defined in `.github/workflows/deploy.yml`. It uses the Wrangler GitHub Action to publish the site to Cloudflare.
+
+To set up deployment for your fork of this project:
+
+1. Generate a Cloudflare API token with the necessary permissions.
+2. In your GitHub repository settings, go to Secrets and add a new secret named `CLOUDFLARE_API_TOKEN` with your Cloudflare API token as the value.
+
+Once set up, every push to the `main` branch will automatically deploy your site.
