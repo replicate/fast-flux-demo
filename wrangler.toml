@@ -10,3 +10,6 @@ minify = true
 
 # Use the new Workers + Assets to host the static frontend files
 assets = { directory = ".worker-next/assets", binding = "ASSETS" }
+
+# Set the appropriate account_id (this is Replicate's account ID)
+account_id = "45191806b6bd0ba8191dccddce0b6944"
