@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const DEFAULT_INPUT = "a cute little jet going super fast through space, it is pink and gold with a trail behind it"
+
 export default function Home() {
-  const [texts, setTexts] = useState<string[]>([]);
+  const [texts, setTexts] = useState<string[]>([DEFAULT_INPUT]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTexts([...texts, e.target.value]);
   };
+
+  // Focus the input element when the page loads)
+  const inputElement = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-stone-900 flex flex-col">
@@ -20,7 +30,8 @@ export default function Home() {
           onChange={onChange}
           placeholder="Type to generate images..."
           className="flex-grow p-2 bg-transparent text-stone-100 placeholder-stone-400 overflow-hidden text-xl resize-none h-10 outline-none mr-4"
-          autoFocus
+          ref={inputElement}
+          onFocus={(e) => e.target.setSelectionRange(e.target.value.length, e.target.value.length)}
         />
         <Link href="https://github.com/replicate/fast-flux-demo" target="_blank" rel="noopener noreferrer">
           <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" className="fill-white">
