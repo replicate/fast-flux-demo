@@ -31,7 +31,7 @@ export default function Home() {
           placeholder="Type to generate images..."
           className="flex-grow p-2 bg-transparent text-stone-100 placeholder-stone-400 overflow-hidden text-xl resize-none h-10 outline-none mr-4"
           ref={inputElement}
-          onFocus={(e) => e.target.setSelectionRange(e.target.value.length, e.target.value.length)}
+          onFocus={(e) => e.target.setSelectionRange(0, e.target.value.length)}
         />
         <Link href="https://github.com/replicate/fast-flux-demo" target="_blank" rel="noopener noreferrer">
           <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" className="fill-white">
