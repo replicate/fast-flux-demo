@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const DEFAULT_INPUT = "a cute little jet going super fast through space"
+ const DEFAULT_INPUT = "super fast pink and gold jet is flying against a beautiful nebula, trail behind it"
 
 export default function Home() {
   const [texts, setTexts] = useState<string[]>([DEFAULT_INPUT]);
