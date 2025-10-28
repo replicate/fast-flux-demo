@@ -62,18 +62,17 @@ export default function Home() {
       <div className="min-h-screen bg-stone-900 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-stone-800 rounded-lg shadow-xl p-8">
           <h1 className="text-2xl font-bold text-stone-100 mb-4">Welcome to Fast Flux Demo</h1>
-          <p className="text-stone-300 mb-4">
-            To use this app, you need a Replicate API token. Enter your token below to get started.
-          </p>
-          <p className="text-stone-400 text-sm mb-6">
+          <p className="text-stone-300 mb-6">
+            Create a{" "}
             <Link
-              href="https://github.com/replicate/fast-flux-demo"
+              href="https://replicate.com/account/api-tokens?new-token-name=fast-flux-demo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 underline"
             >
-              Learn more about this demo
+              Replicate API token
             </Link>
+            {" "}then paste it here:
           </p>
 
           <form onSubmit={handleTokenSubmit} className="space-y-4">
@@ -102,15 +101,17 @@ export default function Home() {
           </form>
 
           <div className="mt-6 pt-6 border-t border-stone-700">
-            <p className="text-sm text-stone-400 mb-2">Don&apos;t have a token?</p>
-            <Link
-              href="https://replicate.com/account/api-tokens?new-token-name=fast-flux-demo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 text-sm underline"
-            >
-              Generate a new API token on Replicate
-            </Link>
+            <p className="text-sm text-stone-400">
+              Check out the GitHub repo at{" "}
+              <Link
+                href="https://github.com/replicate/fast-flux-demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 underline"
+              >
+                replicate/fast-flux-demo
+              </Link>
+            </p>
           </div>
         </div>
       </div>
