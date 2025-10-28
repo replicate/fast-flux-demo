@@ -11,19 +11,13 @@ To run this app locally or deploy your own copy, you'll need:
 - Node.js (20 or later)
 - A [Replicate API token](https://replicate.com/account/api-tokens)
 
-Set your Replicate API token in your environment:
-
-```sh
-export REPLICATE_API_TOKEN=r8_...
-```
-
-Then install dependencies and run the development server:
+Install dependencies and run the development server:
 
 ```
 npm install && npm run dev
 ```
 
-Then open [localhost:3000](http://localhost:3000) in your browser to see the app.
+Then open [localhost:3000](http://localhost:3000) in your browser. You'll be prompted to enter your Replicate API token, which will be stored in your browser's local storage for future use.
 
 ## Continuous Deployment
 
