@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:worker": "cloudflare",
+    "build:worker": "opennextjs-cloudflare build",
     "dev:worker": "wrangler dev --port 8771",
     "preview:worker": "npm run build:worker && npm run dev:worker",
     "deploy:worker": "npm run build:worker && wrangler deploy"
@@ -16,10 +16,10 @@
     "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
-    "replicate": "^1.0.0-beta.1"
+    "replicate": "^1.4.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^0.0.3",
+    "@opennextjs/cloudflare": "^1.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -28,6 +28,6 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "wrangler": "^3.80.2"
+    "wrangler": "^4.71.0"
   }
 }

@@ -36,4 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 .worker-next
+.open-next
 .dev.vars
